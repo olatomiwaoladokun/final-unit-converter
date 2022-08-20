@@ -1,6 +1,7 @@
 import tkinter as tk
 import requests as rs
 import PIL
+import numpy as nu,pint as pt 
 from PIL import Image,ImageTk
 # from PIL import *
 import time as tm
@@ -30,64 +31,74 @@ t.place(x=300,y=230)
 te = tk.Entry()
 te.place(x=300, y=250)
 fvar = tk.IntVar()
-fe = tk.Entry(textvariable=fvar)
-fe.get()
-fe.place(x=100,y=250 )
-fc = None
-fmeter = tk.Button(text="meter", command=lambda: fc == "meter")
-fkilometer = tk.Button(text ="Kilometer", command=lambda : fc == "kilometer" )
-fcentimeter = tk.Button(text="centimeter", command=lambda : fc == "centimeter")
-fmilimeter  = tk.Button(text="milimeter", command=lambda : fc == "milimeter")
-fyard = tk.Button(text="yard", command=lambda : fc=="yard")
-ffoot = tk.Button(text="foot", command=lambda : fc == "foot")
-# froms = [fmeter, fkilometer, fcentimeter, fmilimeter, fyard, ffoot]
-tc = None
-tmeter = tk.Button(text="meter", command=lambda : tc == "meter" )
-tkilometer = tk.Button(text ="Kilometer", command=lambda : tc == "kilometer")
-tcentimeter = tk.Button(text="centimeter", command=lambda : tc == "centimeter")
-tmilimeter  = tk.Button(text="milimeter", command=lambda : tc == "milimeter")
-tyard = tk.Button(text="yard", command=lambda : tc == "yard")
-tfoot = tk.Button(text="foot", command= lambda : tc == "foot")
-fmeter.config(bg="sky blue")
-fmeter.place(x=100,y=280)
-fkilometer.config(bg="sky blue")
-fkilometer.place(x=100,y=310)
-fcentimeter.config(bg="sky blue")
-fcentimeter.place(x=100,y=340)
-fmilimeter.config(bg="sky blue")
-fmilimeter.place(x=100,y=370)
-fyard.config(bg="sky blue")
-fyard.place(x=100,y=400)
-ffoot.config(bg="sky blue")
-ffoot.place(x=100,y=430)
+fg = tk.Entry(textvariable=fvar)
+fe = fg.get()
+fg.place(x=100,y=250 )
+fc = int
+tool = pt.UnitRegistry()
+try:
+    fmeter = tk.Button(text="meter", command=lambda: fc == fe * tool.meter)
+    fkilometer = tk.Button(text ="Kilometer", command=lambda : fc == fe * tool.km)
+    fcentimeter = tk.Button(text="centimeter", command=lambda : fc == fe* tool.cm)
+    fmilimeter  = tk.Button(text="milimeter", command=lambda : fc == fe * tool.mm)
+    fyard = tk.Button(text="yard", command=lambda : fc==fe * tool.yard)
+    ffoot = tk.Button(text="foot", command=lambda : fc == fe * tool.foot)
+    # froms = [fmeter, fkilometer, fcentimeter, fmilimeter, fyard, ffoot]
+    tc = int
+    tmeter = tk.Button(text="meter", command=lambda : tc == "meter" )
+    tkilometer = tk.Button(text ="Kilometer", command=lambda : tc == nu.multiply(fc, tool.km))
+    tcentimeter = tk.Button(text="centimeter", command=lambda : tc == nu.multiply(fc, tool.cm))
+    tmilimeter  = tk.Button(text="milimeter", command=lambda : tc == nu.multiply(fc, tool.mm))
+    tyard = tk.Button(text="yard", command=lambda : tc == nu.multiply(fc, tool.yard))
+    tfoot = tk.Button(text="foot", command= lambda : tc ==nu.multiply(fc, tool.foot))
 
 
-tmeter.config(bg="sky blue")
-tmeter.place(x=300,y=280)
-tkilometer.config(bg="sky blue")
-tkilometer.place(x=300,y=310)
-tcentimeter.config(bg="sky blue")
-tcentimeter.place(x=300,y=340)
-tmilimeter.config(bg="sky blue")
-tmilimeter.place(x=300,y=370)
-tyard.config(bg="sky blue")
-tyard.place(x=300,y=400)
-tfoot.config(bg="sky blue")
-tfoot.place(x=300,y=430)
+    # te.insert(tc, "end")
+
+
+    fmeter.config(bg="sky blue")
+    fmeter.place(x=100,y=280)
+    fkilometer.config(bg="sky blue")
+    fkilometer.place(x=100,y=310)
+    fcentimeter.config(bg="sky blue")
+    fcentimeter.place(x=100,y=340)
+    fmilimeter.config(bg="sky blue")
+    fmilimeter.place(x=100,y=370)
+    fyard.config(bg="sky blue")
+    fyard.place(x=100,y=400)
+    ffoot.config(bg="sky blue")
+    ffoot.place(x=100,y=430)
+
+
+    tmeter.config(bg="sky blue")
+    tmeter.place(x=300,y=280)
+    tkilometer.config(bg="sky blue")
+    tkilometer.place(x=300,y=310)
+    tcentimeter.config(bg="sky blue")
+    tcentimeter.place(x=300,y=340)
+    tmilimeter.config(bg="sky blue")
+    tmilimeter.place(x=300,y=370)
+    tyard.config(bg="sky blue")
+    tyard.place(x=300,y=400)
+    tfoot.config(bg="sky blue")
+    tfoot.place(x=300,y=430)
+finally:
+    print(tc)
 # done = None
 # meter
 
 
-URL = "https://akshayanand.herokuapp.com/api/unit/?type=type&from=from&to=to&value=value"
-par =  {
-    "type" : "length",
-    "from" : "meter",
-    "to" : "centimeter",
-    "value" : 1
-}
-results = rs.get(url=URL, json=par)
-print(results)
-print(rs.status_codes())
+# URL = "https://akshayanand.herokuapp.com/api/unit/?type=type&from=from&to=to&value=value"
+# par =  {
+#     "type" : "length",
+#     "from" : "meter",
+#     "to" : "centimeter",
+#     "value" : 1
+# }
+# results = rs.get(url=URL, json=par)
+# print(results.status_code)
+# print(results)
+# print(rs.status_codes())
 
 # do()
 window.mainloop()
