@@ -1,7 +1,8 @@
 import tkinter as tk
 import requests as rs
 import PIL
-import numpy as nu,pint as pt 
+import numpy as nu
+import pint as pt 
 from PIL import Image,ImageTk
 # from PIL import *
 import time as tm
@@ -13,6 +14,7 @@ window = tk.Tk()
 window.title("Converter")
 window.geometry("500x500")
 window.config(bg="sky blue")
+window.resizable(height=False, width=False)
 frame = tk.Frame(width=10, height=10)
 frame.place(anchor="s", relx=0.5, rely=0.4)
 logo = ImageTk.PhotoImage(Image.open("unit converter_2.png"))
@@ -32,58 +34,57 @@ te = tk.Entry()
 te.place(x=300, y=250)
 fvar = tk.IntVar()
 fg = tk.Entry(textvariable=fvar)
-fe = fg.get()
+
 fg.place(x=100,y=250 )
-fc = int
+fc = None
 tool = pt.UnitRegistry()
-try:
-    fmeter = tk.Button(text="meter", command=lambda: fc == fe * tool.meter)
-    fkilometer = tk.Button(text ="Kilometer", command=lambda : fc == fe * tool.km)
-    fcentimeter = tk.Button(text="centimeter", command=lambda : fc == fe* tool.cm)
-    fmilimeter  = tk.Button(text="milimeter", command=lambda : fc == fe * tool.mm)
-    fyard = tk.Button(text="yard", command=lambda : fc==fe * tool.yard)
-    ffoot = tk.Button(text="foot", command=lambda : fc == fe * tool.foot)
-    # froms = [fmeter, fkilometer, fcentimeter, fmilimeter, fyard, ffoot]
-    tc = int
-    tmeter = tk.Button(text="meter", command=lambda : tc == "meter" )
-    tkilometer = tk.Button(text ="Kilometer", command=lambda : tc == nu.multiply(fc, tool.km))
-    tcentimeter = tk.Button(text="centimeter", command=lambda : tc == nu.multiply(fc, tool.cm))
-    tmilimeter  = tk.Button(text="milimeter", command=lambda : tc == nu.multiply(fc, tool.mm))
-    tyard = tk.Button(text="yard", command=lambda : tc == nu.multiply(fc, tool.yard))
-    tfoot = tk.Button(text="foot", command= lambda : tc ==nu.multiply(fc, tool.foot))
+tc = None
+fe = fg.get()
+print(fc)
+fmeter = tk.Button(text="meter", command=lambda: fc == fe * tool.meter)
+fkilometer = tk.Button(text ="Kilometer", command=lambda : fc == fe * tool.km)
+fcentimeter = tk.Button(text="centimeter", command=lambda : fc == fe* tool.cm)
+fmilimeter  = tk.Button(text="milimeter", command=lambda : fc == fe * tool.mm)
+fyard = tk.Button(text="yard", command=lambda : fc==fe * tool.yard)
+ffoot = tk.Button(text="foot", command=lambda : fc == fe * tool.foot)
+# froms = [fmeter, fkilometer, fcentimeter, fmilimeter, fyard, ffoot]
+tmeter = tk.Button(text="meter", command=lambda : tc == nu.multiply(fc, tool.meter))
+tkilometer = tk.Button(text ="Kilometer", command=lambda : tc == nu.multiply(fc, tool.km))
+tcentimeter = tk.Button(text="centimeter", command=lambda : tc == nu.multiply(fc, tool.cm))
+tmilimeter  = tk.Button(text="milimeter", command=lambda : tc == nu.multiply(fc, tool.mm))
+tyard = tk.Button(text="yard", command=lambda : tc == nu.multiply(fc, tool.yard))
+tfoot = tk.Button(text="foot", command= lambda : tc ==nu.multiply(fc, tool.foot))
+print(tc)
+
+# te.insert(tc, "end")
 
 
-    # te.insert(tc, "end")
+fmeter.config(bg="sky blue")
+fmeter.place(x=100,y=280)
+fkilometer.config(bg="sky blue")
+fkilometer.place(x=100,y=310)
+fcentimeter.config(bg="sky blue")
+fcentimeter.place(x=100,y=340)
+fmilimeter.config(bg="sky blue")
+fmilimeter.place(x=100,y=370)
+fyard.config(bg="sky blue")
+fyard.place(x=100,y=400)
+ffoot.config(bg="sky blue")
+ffoot.place(x=100,y=430)
 
 
-    fmeter.config(bg="sky blue")
-    fmeter.place(x=100,y=280)
-    fkilometer.config(bg="sky blue")
-    fkilometer.place(x=100,y=310)
-    fcentimeter.config(bg="sky blue")
-    fcentimeter.place(x=100,y=340)
-    fmilimeter.config(bg="sky blue")
-    fmilimeter.place(x=100,y=370)
-    fyard.config(bg="sky blue")
-    fyard.place(x=100,y=400)
-    ffoot.config(bg="sky blue")
-    ffoot.place(x=100,y=430)
-
-
-    tmeter.config(bg="sky blue")
-    tmeter.place(x=300,y=280)
-    tkilometer.config(bg="sky blue")
-    tkilometer.place(x=300,y=310)
-    tcentimeter.config(bg="sky blue")
-    tcentimeter.place(x=300,y=340)
-    tmilimeter.config(bg="sky blue")
-    tmilimeter.place(x=300,y=370)
-    tyard.config(bg="sky blue")
-    tyard.place(x=300,y=400)
-    tfoot.config(bg="sky blue")
-    tfoot.place(x=300,y=430)
-finally:
-    print(tc)
+tmeter.config(bg="sky blue")
+tmeter.place(x=300,y=280)
+tkilometer.config(bg="sky blue")
+tkilometer.place(x=300,y=310)
+tcentimeter.config(bg="sky blue")
+tcentimeter.place(x=300,y=340)
+tmilimeter.config(bg="sky blue")
+tmilimeter.place(x=300,y=370)
+tyard.config(bg="sky blue")
+tyard.place(x=300,y=400)
+tfoot.config(bg="sky blue")
+tfoot.place(x=300,y=430)
 # done = None
 # meter
 
