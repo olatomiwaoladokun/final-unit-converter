@@ -197,6 +197,7 @@ def convert():
             te.insert("end", result)
     except _tkinter.TclError:
         messagebox.showerror(title = "Bad input!!", message="Your input is not valid")
+        fg.delete(0, "end")
 
 options = [
     None,
