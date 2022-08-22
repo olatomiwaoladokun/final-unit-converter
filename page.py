@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
+from tkinter import messagebox
 import requests as rs
 import PIL
 import numpy as nu
@@ -41,7 +42,7 @@ from_var = tk.IntVar()
 fg = tk.Entry(window, textvariable=from_var)
 
 fg.place(x=100,y=250 )
-tool = pt.UnitRegistry()
+# tool = pt.UnitRegistry()
 fe = fg.get()
 
 
@@ -56,141 +57,146 @@ foot = fum.Foot()
 
 
 def convert():
-    from_entry = from_var.get()
-    to_entry = to_var.get()
+    try:    
+        from_e = from_var.get()
+        from_entry = float(from_e)
+        print(from_entry)
+        to_entry = to_var.get()
 
-    fastfrom = _from.get()
-    fasto = _to.get()
+        fastfrom = _from.get()
+        fasto = _to.get()
 
-    # Meter
-    te.delete(0, "end")
-    if _from.get() =="Meter" and _to.get() == "Meter":
-        result = 1
-        te.insert("end", result)
-    elif _from.get() == "Meter" and _to.get() == "Kilometer":
-        result = meter.meter_kilometer(from_entry)
-        te.insert("end", result)
-    elif fastfrom == "Meter" and fasto == "Centimeter":
-        result = meter.meter_centimeter(from_entry)
-        te.insert("end", result)
-    elif fastfrom == "Meter" and fasto == "Foot":
-        result = meter.meter_foot(from_entry)
-        te.insert("end", result)
-    elif fastfrom == "Meter" and fasto == "Yard":
-        result = meter.meter_yard(from_entry)
-        te.insert("end", result)
+        # Meter
+        te.delete(0, "end")
+        if _from.get() =="Meter" and _to.get() == "Meter":
+            result = 1
+            te.insert("end", result)
+        elif _from.get() == "Meter" and _to.get() == "Kilometer":
+            result = meter.meter_kilometer(from_entry)
+            print(from_entry)
+            te.insert("end", result)
+        elif fastfrom == "Meter" and fasto == "Centimeter":
+            result = meter.meter_centimeter(from_entry)
+            te.insert("end", result)
+        elif fastfrom == "Meter" and fasto == "Foot":
+            result = meter.meter_foot(from_entry)
+            te.insert("end", result)
+        elif fastfrom == "Meter" and fasto == "Yard":
+            result = meter.meter_yard(from_entry)
+            te.insert("end", result)
 
-    elif fastfrom == "Meter" and fasto == "Kilometer":
-        result = meter.meter_kilometer(from_entry)
-        te.insert("end", result)
+        elif fastfrom == "Meter" and fasto == "Kilometer":
+            result = meter.meter_kilometer(from_entry)
+            te.insert("end", result)
 
-#   Kilometer
-    if fastfrom == "Kilometer" and fasto == "Meter":
-        result = km.kilometer_meter(from_entry)
-        te.insert("end", result)
-    elif fastfrom == "Kilometer" and fasto == "Kilometer":
-        result = 1
-        te.insert("end", result)    
-    elif fastfrom == "Kilometer" and fasto == "Milimeter":
-        result = km.kilometer_milimeter(from_entry)
-        te.insert("end", result)
-    elif fastfrom == "Kilometer" and fasto == "Centimeter":
-        result = km.kilometer_centimeter(from_entry)
-        te.insert("end", result)
-    elif fastfrom == "Kilometer" and fasto == "Yard":
-        result = km.kilometer_yard(from_entry)
-        te.insert("end", result)
-    elif fastfrom == "Kilometer" and fasto == "Foot":
-        result = km.kilometer_foot(from_entry)
-        te.insert("end", result)
+    #   Kilometer
+        if fastfrom == "Kilometer" and fasto == "Meter":
+            result = km.kilometer_meter(from_entry)
+            te.insert("end", result)
+        elif fastfrom == "Kilometer" and fasto == "Kilometer":
+            result = 1
+            te.insert("end", result)    
+        elif fastfrom == "Kilometer" and fasto == "Milimeter":
+            result = km.kilometer_milimeter(from_entry)
+            te.insert("end", result)
+        elif fastfrom == "Kilometer" and fasto == "Centimeter":
+            result = km.kilometer_centimeter(from_entry)
+            te.insert("end", result)
+        elif fastfrom == "Kilometer" and fasto == "Yard":
+            result = km.kilometer_yard(from_entry)
+            te.insert("end", result)
+        elif fastfrom == "Kilometer" and fasto == "Foot":
+            result = km.kilometer_foot(from_entry)
+            te.insert("end", result)
 
-#   centimeter
-    if fastfrom == "Centimeter" and fasto == "Meter":
-        result = cm.cetimeter_meter(from_entry)
-        te.insert("end", result)
-    elif fastfrom == "Centimeter" and fasto == "Centimeter":
-        result = 1
-        te.insert("end", result)    
-    elif fastfrom == "Centimeter" and fasto == "Kilometer":
-        result = cm.centimeter_kilometer
-        te.insert("end", result)
-    elif fastfrom == "Centimeter" and fasto == "Milimeter":
-        result = cm.centimeter_milimemter(from_entry)
-        te.insert("end", result)
-    elif fastfrom == "Centimeter" and fasto == "Centimeter":
-        result = cm.centimeter_centimeter(from_entry)
-        te.insert("end", result)
-    elif fastfrom == "Centimeter" and fasto == "Yard":
-        result = cm.centimeter_yard(from_entry)
-        te.insert("end", result)
-    elif fastfrom == "Centimeter" and fasto == "Foot":
-        result = cm.centimeter_foot(from_entry)
-        te.insert("end", result)
+    #   centimeter
+        if fastfrom == "Centimeter" and fasto == "Meter":
+            result = cm.cetimeter_meter(from_entry)
+            te.insert("end", result)
+        elif fastfrom == "Centimeter" and fasto == "Centimeter":
+            result = 1
+            te.insert("end", result)    
+        elif fastfrom == "Centimeter" and fasto == "Kilometer":
+            result = cm.centimeter_kilometer
+            te.insert("end", result)
+        elif fastfrom == "Centimeter" and fasto == "Milimeter":
+            result = cm.centimeter_milimemter(from_entry)
+            te.insert("end", result)
+        elif fastfrom == "Centimeter" and fasto == "Centimeter":
+            result = cm.centimeter_centimeter(from_entry)
+            te.insert("end", result)
+        elif fastfrom == "Centimeter" and fasto == "Yard":
+            result = cm.centimeter_yard(from_entry)
+            te.insert("end", result)
+        elif fastfrom == "Centimeter" and fasto == "Foot":
+            result = cm.centimeter_foot(from_entry)
+            te.insert("end", result)
 
-#   milimeter
-    if fastfrom == "Milimeter" and fasto == "Meter":
-        result = mm.milimeter_meter(from_entry)
-        te.insert("end", result)
-    elif fastfrom == "Milimeter" and fasto == "Milimeter":
-        result = 1
-        te.insert("end", result)    
-    elif fastfrom == "Milimeter" and fasto == "Milimeter":
-        result = mm.milimeter_milimeter(from_entry)
-        te.insert("end", result)
-    elif fastfrom == "Milimeter" and fasto == "Kilometer":
-        result = mm.milimeter_kilometer(from_entry)
-        te.insert("end", result)
-    elif fastfrom == "Milimeter" and fasto == "Centimeter":
-        result = mm.milimeter_centimeter(from_entry)
-        te.insert("end", result)
-    elif fastfrom == "Milimeter" and fasto == "Milimeter":
-        result = mm.milimeter_yard(from_entry)
-        te.insert("end", result)
-    elif fastfrom == "Milimeter" and fasto == "Foot":
-        result = mm.milimeter_foot(from_entry)
-        te.insert("end", result)
+    #   milimeter
+        if fastfrom == "Milimeter" and fasto == "Meter":
+            result = mm.milimeter_meter(from_entry)
+            te.insert("end", result)
+        elif fastfrom == "Milimeter" and fasto == "Milimeter":
+            result = 1
+            te.insert("end", result)    
+        elif fastfrom == "Milimeter" and fasto == "Milimeter":
+            result = mm.milimeter_milimeter(from_entry)
+            te.insert("end", result)
+        elif fastfrom == "Milimeter" and fasto == "Kilometer":
+            result = mm.milimeter_kilometer(from_entry)
+            te.insert("end", result)
+        elif fastfrom == "Milimeter" and fasto == "Centimeter":
+            result = mm.milimeter_centimeter(from_entry)
+            te.insert("end", result)
+        elif fastfrom == "Milimeter" and fasto == "Milimeter":
+            result = mm.milimeter_yard(from_entry)
+            te.insert("end", result)
+        elif fastfrom == "Milimeter" and fasto == "Foot":
+            result = mm.milimeter_foot(from_entry)
+            te.insert("end", result)
 
 
-#   Yard
-    if fastfrom == "Yard" and fasto == "Meter":
-        result = yard.yard_meter(from_entry)
-        te.insert("end", result)  
-    elif fastfrom == "Yard" and fasto == "Milimeter":
-        result = yard.yard_milimeter(from_entry)
-        te.insert("end", result)
-    elif fastfrom == "Yard" and fasto == "Kilometer":
-        result = yard.yard_kilometer(from_entry)
-        te.insert("end", result)
-    elif fastfrom == "Yard" and fasto == "Centimeter":
-        result = yard.yard_centimeter(from_entry)
-        te.insert("end", result)
-    elif fastfrom == "Yard" and fasto == "Yard":
-        result = 1
-        te.insert("end", result)
-    elif fastfrom == "Yard" and fasto == "Foot":
-        result = yard.yard_foot(from_entry)
-        te.insert("end", result)
-    
-#   Foot
-    if fastfrom == "Foot" and fasto == "Meter":
-        result = foot.foot_meter(from_entry)
-        te.insert("end", result)  
-    elif fastfrom == "Foot" and fasto == "Milimeter":
-        result = foot.foot_milimeter(from_entry)
-        te.insert("end", result)
-    elif fastfrom == "Foot" and fasto == "Kilometer":
-        result = foot.foot_kilometer(from_entry)
-        te.insert("end", result)
-    elif fastfrom == "Foot" and fasto == "Centimeter":
-        result = foot.foot_centimeter(from_entry)
-        te.insert("end", result)
-    elif fastfrom == "Foot" and fasto == "Yard":
-        result = foot.foot_yard(from_entry)
-        te.insert("end", result)
-    elif fastfrom == "Foot" and fasto == "Foot":
-        result = 1
-        te.insert("end", result)
-
+    #   Yard
+        if fastfrom == "Yard" and fasto == "Meter":
+            result = yard.yard_meter(from_entry)
+            te.insert("end", result)  
+        elif fastfrom == "Yard" and fasto == "Milimeter":
+            result = yard.yard_milimeter(from_entry)
+            te.insert("end", result)
+        elif fastfrom == "Yard" and fasto == "Kilometer":
+            result = yard.yard_kilometer(from_entry)
+            te.insert("end", result)
+        elif fastfrom == "Yard" and fasto == "Centimeter":
+            result = yard.yard_centimeter(from_entry)
+            te.insert("end", result)
+        elif fastfrom == "Yard" and fasto == "Yard":
+            result = 1
+            te.insert("end", result)
+        elif fastfrom == "Yard" and fasto == "Foot":
+            result = yard.yard_foot(from_entry)
+            te.insert("end", result)
+        
+    #   Foot
+        if fastfrom == "Foot" and fasto == "Meter":
+            result = foot.foot_meter(from_entry)
+            te.insert("end", result)  
+        elif fastfrom == "Foot" and fasto == "Milimeter":
+            result = foot.foot_milimeter(from_entry)
+            te.insert("end", result)
+        elif fastfrom == "Foot" and fasto == "Kilometer":
+            result = foot.foot_kilometer(from_entry)
+            te.insert("end", result)
+        elif fastfrom == "Foot" and fasto == "Centimeter":
+            result = foot.foot_centimeter(from_entry)
+            te.insert("end", result)
+        elif fastfrom == "Foot" and fasto == "Yard":
+            result = foot.foot_yard(from_entry)
+            te.insert("end", result)
+        elif fastfrom == "Foot" and fasto == "Foot":
+            result = 1
+            te.insert("end", result)
+    except _tkinter.TclError:
+        messagebox.showerror(title = "Bad input!!", message="Your input is not valid")
 
 options = [
     None,
@@ -203,6 +209,7 @@ options = [
 ]
 
 _from = tk.StringVar()
+# print(type(_from))
 _from.set("Meter")
 from_drop_down = ttk.OptionMenu(window, _from, *options)
 from_drop_down.place(x=100,y=280)
