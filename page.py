@@ -9,8 +9,7 @@ from PIL import Image,ImageTk
 import formulas as fum
 import time as tm
 import _tkinter
-# def start():
-    # window.resizable(width=False, height=False)
+
 
 
 
@@ -60,8 +59,6 @@ def convert():
     from_entry = from_var.get()
     to_entry = to_var.get()
 
-    print("FROM: ", _from.get())
-    print("TO: ", _to.get())
     fastfrom = _from.get()
     fasto = _to.get()
 
@@ -188,10 +185,10 @@ def convert():
         result = foot.foot_centimeter(from_entry)
         te.insert("end", result)
     elif fastfrom == "Foot" and fasto == "Yard":
-        result = 1
+        result = foot.foot_yard(from_entry)
         te.insert("end", result)
     elif fastfrom == "Foot" and fasto == "Foot":
-        result = foot.foot_foot(from_entry)
+        result = 1
         te.insert("end", result)
 
 
@@ -216,51 +213,11 @@ to_drop_down = ttk.OptionMenu(window, _to, *options)
 to_drop_down.place(x=300,y=280)
 
 convert_btn = tk.Button(window, text="Convert", command=convert)
-convert_btn.place(x=230,y=350)
+convert_btn.config(bg="sky blue")
+convert_btn.place(x=210,y=350)
 
 
 
-# button
-# fmeter = tk.Button(text="meter", )
-# fkilometer = tk.Button(text ="Kilometer")
-# fcentimeter = tk.Button(text="centimeter")
-# fmilimeter  = tk.Button(text="milimeter")
-# fyard = tk.Button(text="yard")
-# ffoot = tk.Button(text="foot")
-# tmeter = tk.Button(text="meter")
-# tkilometer = tk.Button(text ="Kilometer")
-# tcentimeter = tk.Button(text="centimeter")
-# tmilimeter  = tk.Button(text="milimeter")
-# tyard = tk.Button(text="yard")
-# tfoot = tk.Button(text="foot")
-
-# from values config
-# fmeter.config(bg="sky blue")
-# fmeter.place(x=100,y=280)
-# fkilometer.config(bg="sky blue")
-# fkilometer.place(x=100,y=310)
-# fcentimeter.config(bg="sky blue")
-# fcentimeter.place(x=100,y=340)
-# fmilimeter.config(bg="sky blue")
-# fmilimeter.place(x=100,y=370)
-# fyard.config(bg="sky blue")
-# fyard.place(x=100,y=400)
-# ffoot.config(bg="sky blue")
-# ffoot.place(x=100,y=430)
-
-# to values config
-# tmeter.config(bg="sky blue")
-# tmeter.place(x=300,y=280)
-# tkilometer.config(bg="sky blue")
-# tkilometer.place(x=300,y=310)
-# tcentimeter.config(bg="sky blue")
-# tcentimeter.place(x=300,y=340)
-# tmilimeter.config(bg="sky blue")
-# tmilimeter.place(x=300,y=370)
-# tyard.config(bg="sky blue")
-# tyard.place(x=300,y=400)
-# tfoot.config(bg="sky blue")
-# tfoot.place(x=300,y=430)
 
 
 
