@@ -1,14 +1,20 @@
 import tkinter as tk
+from tkinter import ttk
 import requests as rs
 import PIL
 import numpy as nu
 import pint as pt 
 from PIL import Image,ImageTk
 # from PIL import *
+import formulas as fum
 import time as tm
 import _tkinter
 # def start():
     # window.resizable(width=False, height=False)
+
+
+
+# MAIN WINDOW
 
 window = tk.Tk() 
 window.title("Converter")
@@ -19,10 +25,9 @@ frame = tk.Frame(width=10, height=10)
 frame.place(anchor="s", relx=0.5, rely=0.4)
 logo = ImageTk.PhotoImage(Image.open("unit converter_2.png"))
 lb = tk.Label(frame, image=logo)
-# help(w)
 lb.pack()
-# labels
 
+# labels
 f = tk.Label(text="FROM:", bg="sky blue")
 f.place(x=100, y=230)
 
@@ -30,63 +35,253 @@ t = tk.Label(text="TO:", bg="sky blue")
 t.place(x=300,y=230)
 
 # entrys
-te = tk.Entry()
+to_var = tk.IntVar()
+te = tk.Entry(window, textvariable=to_var)
 te.place(x=300, y=250)
-fvar = tk.IntVar()
-fg = tk.Entry(textvariable=fvar)
+from_var = tk.IntVar()
+fg = tk.Entry(window, textvariable=from_var)
 
 fg.place(x=100,y=250 )
-fc = None
 tool = pt.UnitRegistry()
-tc = None
 fe = fg.get()
-print(fc)
-fmeter = tk.Button(text="meter", command=lambda: fc == fe * tool.meter)
-fkilometer = tk.Button(text ="Kilometer", command=lambda : fc == fe * tool.km)
-fcentimeter = tk.Button(text="centimeter", command=lambda : fc == fe* tool.cm)
-fmilimeter  = tk.Button(text="milimeter", command=lambda : fc == fe * tool.mm)
-fyard = tk.Button(text="yard", command=lambda : fc==fe * tool.yard)
-ffoot = tk.Button(text="foot", command=lambda : fc == fe * tool.foot)
-# froms = [fmeter, fkilometer, fcentimeter, fmilimeter, fyard, ffoot]
-tmeter = tk.Button(text="meter", command=lambda : tc == nu.multiply(fc, tool.meter))
-tkilometer = tk.Button(text ="Kilometer", command=lambda : tc == nu.multiply(fc, tool.km))
-tcentimeter = tk.Button(text="centimeter", command=lambda : tc == nu.multiply(fc, tool.cm))
-tmilimeter  = tk.Button(text="milimeter", command=lambda : tc == nu.multiply(fc, tool.mm))
-tyard = tk.Button(text="yard", command=lambda : tc == nu.multiply(fc, tool.yard))
-tfoot = tk.Button(text="foot", command= lambda : tc ==nu.multiply(fc, tool.foot))
-print(tc)
-
-# te.insert(tc, "end")
 
 
-fmeter.config(bg="sky blue")
-fmeter.place(x=100,y=280)
-fkilometer.config(bg="sky blue")
-fkilometer.place(x=100,y=310)
-fcentimeter.config(bg="sky blue")
-fcentimeter.place(x=100,y=340)
-fmilimeter.config(bg="sky blue")
-fmilimeter.place(x=100,y=370)
-fyard.config(bg="sky blue")
-fyard.place(x=100,y=400)
-ffoot.config(bg="sky blue")
-ffoot.place(x=100,y=430)
+
+# LOGIN ACTIVITIES
+meter = fum.Meter()
+km = fum.Kilometer()
+mm = fum.Milimeter()
+cm = fum.Centimeter()
+yard = fum.Yard()
+foot = fum.Foot()
 
 
-tmeter.config(bg="sky blue")
-tmeter.place(x=300,y=280)
-tkilometer.config(bg="sky blue")
-tkilometer.place(x=300,y=310)
-tcentimeter.config(bg="sky blue")
-tcentimeter.place(x=300,y=340)
-tmilimeter.config(bg="sky blue")
-tmilimeter.place(x=300,y=370)
-tyard.config(bg="sky blue")
-tyard.place(x=300,y=400)
-tfoot.config(bg="sky blue")
-tfoot.place(x=300,y=430)
-# done = None
-# meter
+def convert():
+    from_entry = from_var.get()
+    to_entry = to_var.get()
+
+    print("FROM: ", _from.get())
+    print("TO: ", _to.get())
+    fastfrom = _from.get()
+    fasto = _to.get()
+
+    # Meter
+    te.delete(0, "end")
+    if _from.get() =="Meter" and _to.get() == "Meter":
+        result = 1
+        te.insert("end", result)
+    elif _from.get() == "Meter" and _to.get() == "Kilometer":
+        result = meter.meter_kilometer(from_entry)
+        te.insert("end", result)
+    elif fastfrom == "Meter" and fasto == "Centimeter":
+        result = meter.meter_centimeter(from_entry)
+        te.insert("end", result)
+    elif fastfrom == "Meter" and fasto == "Foot":
+        result = meter.meter_foot(from_entry)
+        te.insert("end", result)
+    elif fastfrom == "Meter" and fasto == "Yard":
+        result = meter.meter_yard(from_entry)
+        te.insert("end", result)
+
+    elif fastfrom == "Meter" and fasto == "Kilometer":
+        result = meter.meter_kilometer(from_entry)
+        te.insert("end", result)
+
+#   Kilometer
+    if fastfrom == "Kilometer" and fasto == "Meter":
+        result = km.kilometer_meter(from_entry)
+        te.insert("end", result)
+    elif fastfrom == "Kilometer" and fasto == "Kilometer":
+        result = 1
+        te.insert("end", result)    
+    elif fastfrom == "Kilometer" and fasto == "Milimeter":
+        result = km.kilometer_milimeter(from_entry)
+        te.insert("end", result)
+    elif fastfrom == "Kilometer" and fasto == "Centimeter":
+        result = km.kilometer_centimeter(from_entry)
+        te.insert("end", result)
+    elif fastfrom == "Kilometer" and fasto == "Yard":
+        result = km.kilometer_yard(from_entry)
+        te.insert("end", result)
+    elif fastfrom == "Kilometer" and fasto == "Foot":
+        result = km.kilometer_foot(from_entry)
+        te.insert("end", result)
+
+#   centimeter
+    if fastfrom == "Centimeter" and fasto == "Meter":
+        result = cm.cetimeter_meter(from_entry)
+        te.insert("end", result)
+    elif fastfrom == "Centimeter" and fasto == "Centimeter":
+        result = 1
+        te.insert("end", result)    
+    elif fastfrom == "Centimeter" and fasto == "Kilometer":
+        result = cm.centimeter_kilometer
+        te.insert("end", result)
+    elif fastfrom == "Centimeter" and fasto == "Milimeter":
+        result = cm.centimeter_milimemter(from_entry)
+        te.insert("end", result)
+    elif fastfrom == "Centimeter" and fasto == "Centimeter":
+        result = cm.centimeter_centimeter(from_entry)
+        te.insert("end", result)
+    elif fastfrom == "Centimeter" and fasto == "Yard":
+        result = cm.centimeter_yard(from_entry)
+        te.insert("end", result)
+    elif fastfrom == "Centimeter" and fasto == "Foot":
+        result = cm.centimeter_foot(from_entry)
+        te.insert("end", result)
+
+#   milimeter
+    if fastfrom == "Milimeter" and fasto == "Meter":
+        result = mm.milimeter_meter(from_entry)
+        te.insert("end", result)
+    elif fastfrom == "Milimeter" and fasto == "Milimeter":
+        result = 1
+        te.insert("end", result)    
+    elif fastfrom == "Milimeter" and fasto == "Milimeter":
+        result = mm.milimeter_milimeter(from_entry)
+        te.insert("end", result)
+    elif fastfrom == "Milimeter" and fasto == "Kilometer":
+        result = mm.milimeter_kilometer(from_entry)
+        te.insert("end", result)
+    elif fastfrom == "Milimeter" and fasto == "Centimeter":
+        result = mm.milimeter_centimeter(from_entry)
+        te.insert("end", result)
+    elif fastfrom == "Milimeter" and fasto == "Milimeter":
+        result = mm.milimeter_yard(from_entry)
+        te.insert("end", result)
+    elif fastfrom == "Milimeter" and fasto == "Foot":
+        result = mm.milimeter_foot(from_entry)
+        te.insert("end", result)
+
+
+#   Yard
+    if fastfrom == "Yard" and fasto == "Meter":
+        result = yard.yard_meter(from_entry)
+        te.insert("end", result)  
+    elif fastfrom == "Yard" and fasto == "Milimeter":
+        result = yard.yard_milimeter(from_entry)
+        te.insert("end", result)
+    elif fastfrom == "Yard" and fasto == "Kilometer":
+        result = yard.yard_kilometer(from_entry)
+        te.insert("end", result)
+    elif fastfrom == "Yard" and fasto == "Centimeter":
+        result = yard.yard_centimeter(from_entry)
+        te.insert("end", result)
+    elif fastfrom == "Yard" and fasto == "Yard":
+        result = 1
+        te.insert("end", result)
+    elif fastfrom == "Yard" and fasto == "Foot":
+        result = yard.yard_foot(from_entry)
+        te.insert("end", result)
+    
+#   Foot
+    if fastfrom == "Foot" and fasto == "Meter":
+        result = foot.foot_meter(from_entry)
+        te.insert("end", result)  
+    elif fastfrom == "Foot" and fasto == "Milimeter":
+        result = foot.foot_milimeter(from_entry)
+        te.insert("end", result)
+    elif fastfrom == "Foot" and fasto == "Kilometer":
+        result = foot.foot_kilometer(from_entry)
+        te.insert("end", result)
+    elif fastfrom == "Foot" and fasto == "Centimeter":
+        result = foot.foot_centimeter(from_entry)
+        te.insert("end", result)
+    elif fastfrom == "Foot" and fasto == "Yard":
+        result = 1
+        te.insert("end", result)
+    elif fastfrom == "Foot" and fasto == "Foot":
+        result = foot.foot_foot(from_entry)
+        te.insert("end", result)
+
+
+options = [
+    None,
+    "Meter",
+    "Kilometer",
+    "Centimeter",
+    "Millimeter",
+    "Yard",
+    "Foot"
+]
+
+_from = tk.StringVar()
+_from.set("Meter")
+from_drop_down = ttk.OptionMenu(window, _from, *options)
+from_drop_down.place(x=100,y=280)
+
+_to = tk.StringVar()
+_to.set("Meter")
+to_drop_down = ttk.OptionMenu(window, _to, *options)
+to_drop_down.place(x=300,y=280)
+
+convert_btn = tk.Button(window, text="Convert", command=convert)
+convert_btn.place(x=230,y=350)
+
+
+
+# button
+# fmeter = tk.Button(text="meter", )
+# fkilometer = tk.Button(text ="Kilometer")
+# fcentimeter = tk.Button(text="centimeter")
+# fmilimeter  = tk.Button(text="milimeter")
+# fyard = tk.Button(text="yard")
+# ffoot = tk.Button(text="foot")
+# tmeter = tk.Button(text="meter")
+# tkilometer = tk.Button(text ="Kilometer")
+# tcentimeter = tk.Button(text="centimeter")
+# tmilimeter  = tk.Button(text="milimeter")
+# tyard = tk.Button(text="yard")
+# tfoot = tk.Button(text="foot")
+
+# from values config
+# fmeter.config(bg="sky blue")
+# fmeter.place(x=100,y=280)
+# fkilometer.config(bg="sky blue")
+# fkilometer.place(x=100,y=310)
+# fcentimeter.config(bg="sky blue")
+# fcentimeter.place(x=100,y=340)
+# fmilimeter.config(bg="sky blue")
+# fmilimeter.place(x=100,y=370)
+# fyard.config(bg="sky blue")
+# fyard.place(x=100,y=400)
+# ffoot.config(bg="sky blue")
+# ffoot.place(x=100,y=430)
+
+# to values config
+# tmeter.config(bg="sky blue")
+# tmeter.place(x=300,y=280)
+# tkilometer.config(bg="sky blue")
+# tkilometer.place(x=300,y=310)
+# tcentimeter.config(bg="sky blue")
+# tcentimeter.place(x=300,y=340)
+# tmilimeter.config(bg="sky blue")
+# tmilimeter.place(x=300,y=370)
+# tyard.config(bg="sky blue")
+# tyard.place(x=300,y=400)
+# tfoot.config(bg="sky blue")
+# tfoot.place(x=300,y=430)
+
+
+
+
+window.mainloop()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # URL = "https://akshayanand.herokuapp.com/api/unit/?type=type&from=from&to=to&value=value"
@@ -102,7 +297,6 @@ tfoot.place(x=300,y=430)
 # print(rs.status_codes())
 
 # do()
-window.mainloop()
 # "#220033"
 # win.destroy()
 # button places

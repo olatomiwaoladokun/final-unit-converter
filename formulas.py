@@ -1,129 +1,130 @@
-class meter:
-    def meter_meter(x): 
+
+
+class Meter:
+    def meter_meter(self, x): 
         y = x*1
         return y
-    def meter_kilometer(x):
+    def meter_kilometer(self, x):
         y = x*0.001
         return y
-    def meter_centimeter(x): 
+    def meter_centimeter(self, x): 
         y = x*100
         return y
-    def meter_milimeter(x): 
+    def meter_milimeter(self, x): 
         y = x*1000
         return y
-    def meter_yard(x): 
+    def meter_yard(self, x): 
         y = x*1.0936132983
         return y
-    def meter_foot(x):
+    def meter_foot(self, x):
         y = x*3.280839895
-        return y 
+        return y  
 
-class kilometer:
-    def kilometer_meter(x):
+class Kilometer:
+    def kilometer_meter(self, x):
         y = x*1000
         return y
-    def kilometer_kilometer(x):
+    def kilometer_kilometer(self, x):
         y = x*1
         return y
-    def kilometer_centimeter(x): 
+    def kilometer_centimeter(self, x): 
         y = x*100000
         return y
-    def kilometer_milimeter(x):
+    def kilometer_milimeter(self, x):
         y = x*1000000
         return y
-    def  kilometer_yard(x):
+    def  kilometer_yard(self, x):
         y = x* 1093.6132983
         return y
-    def kilometer_foot(x):
+    def kilometer_foot(self, x):
         y = x* 3280.839895
         return y
 
-class centimeter:
-    def cetimeter_meter(x):
+
+class Centimeter:
+    def cetimeter_meter(self, x):
         y = x*0.01
         return y
 
-    def centimeter_kilometer(x): 
+    def centimeter_kilometer(self, x): 
         y = x*0.00001
         return y
-    def centimeter_centimeter(x):
+    def centimeter_centimeter(self, x):
         y = x*1
         return y
-    def centimeter_milimemter(x):
+    def centimeter_milimemter(self, x):
         y = x*10
         return y
-    def centimeter_yard(x):
+    def centimeter_yard(self, x):
         y = x*0.010936133
         return y
-    def centemeter_foot(x):
+    def centimeter_foot(self, x):
         y = x*0.032808399
         return y
 
-class milimeter:
-    def milimeter_meter(x):
+class Milimeter:
+    def milimeter_meter(self, x):
         y = x*0.001
         return y
-    def milimeter_kilometer(x):
+    def milimeter_kilometer(self, x):
         y = x*0.000001
         return y
-    def milimeter_centimeter(x):
+    def milimeter_centimeter(self, x):
         y = x*0.1
         return y
-    def milimeter_milimeter(x):
+    def milimeter_milimeter(self, x):
         y = x*1
         return y
-    def milimeter_yard(x):
+    def milimeter_yard(self, x):
         y = x*0.0010936133
         return y
-    def milimeter_foot(x):
+    def milimeter_foot(self, x):
         y = 0.0032808399
         return y
-class yard:
-    def yard_meter(x):
+
+
+class Yard:
+    def yard_meter(self, x):
         y = x*0.9144
         return y 
-    def yard_kilometer(x):
+    def yard_kilometer(self, x):
         y = x*0.0009144
         return y
-    def yard_centimeter(x):
+    def yard_centimeter(self, x):
         y = x*91.44
         return y
-    def yard_milimeter(x):
+    def yard_milimeter(self, x):
         y = x*914.4
         return y
-    def yard_yard(x):
+    def yard_yard(self, x):
         y = x*1
         return y        
-    def yard_foot(x):
+    def yard_foot(self, x):
         y = x*3
         return y
-class foot:
-    def foot_meter(x):
+
+
+class Foot:
+    def foot_meter(self, x):
         y = x*0.3048
         return y
-    def foot_kilometer(x):
+    def foot_kilometer(self, x):
         y = x*0.0003048
         return y
-    def foot_centimeter(x):
+    def foot_centimeter(self, x):
         y = x*30.48
         return y
-    def foot_milimeter(x):
+    def foot_milimeter(self, x):
         y = x*304.8
         return y
-    def foot_yard(x):
+    def foot_yard(self, x):
         y = x*0.3333333333
         return y
-    def foot_foot(x):
+    def foot_foot(self, x):
         y = x*1
         return y
-def do():    
-    from page import start
-    d = start.do.te.done
-    start.do.te.insert("end", f"{d}")  
-    print(type(d))
-    print(d)
-    print(type(d))
-    print(d)
+
+
 
 # a = meter.meter_meter(2)
 # print(a)      
